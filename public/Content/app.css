@@ -1,0 +1,135 @@
+/*CSS3*/ 
+@charset "UTF-8"; 
+
+html
+{
+    background-color: antiquewhite;
+    background-image: url("/Assets/media/background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+body
+{
+    background-color: transparent;
+}
+
+div.row
+{
+    background-color: rgba(250, 193, 143, 0.727);
+    padding: 10px;
+    font-family: Verdana, sans-serif;
+    border-style: solid;
+    border-color: #000000;
+}
+
+div.text-center h6
+{
+    color:white; 
+    font-size:18px;
+}
+
+main
+{
+    text-align: center;
+}
+
+nav
+{
+    text-align: center;
+    transition: transform 0.1s ease-in-out;
+}
+
+nav img
+{
+    opacity: 100;
+}
+
+nav img:hover{
+    
+    transform: scale(1.1);
+}
+
+#bottom_nav h6
+{ 
+    margin-left:6px;
+    margin-right:6px;
+}
+
+.box { 
+  text-align: center; 
+  float: left; 
+  width: 400px;
+  height: 400px; 
+  background-color: burlywood;
+  margin: 15px;
+  border-style: solid;
+  border-color: black; 
+} 
+
+.box:hover {
+  transform: scale(1.1);  
+  transition: transform 0.5s ease-out;
+  background-color: lightyellow;
+}
+
+
+.journalbutton {
+  appearance: none;
+  background-color: burlywood;
+  border-width: 0;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Impact, "Jazz LET", fantasy;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1em;
+  margin: 0;
+  opacity: 1;
+  outline: 0;
+  padding: 1.5em 2.2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: geometricprecision;
+  text-transform: uppercase;
+  transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+  margin-top: 25%;
+}
+
+.journalbutton:before {
+  animation: opacityFallbackOut .5s step-end forwards;
+  backface-visibility: hidden;
+  background-color: lightgoldenrodyellow;
+  clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translateZ(0);
+  transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+  width: 100%;
+}
+
+.journalbutton:hover:before {
+  animation: opacityFallbackIn 0s step-start forwards;
+  clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+}
+
+.journalbutton:after {
+  background-color: #FFFFFF;
+}
+
+.journalbutton span {
+  z-index: 1;
+  position: relative;
+}

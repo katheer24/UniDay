@@ -1,0 +1,43 @@
+<%- include ('../partials/header.ejs'); %>
+<%- include ('../partials/main_nav.ejs'); %>
+ 
+ <main>
+<br>
+<a href="/uni-day/add" class="btn btn-primary" role="button">
+        <i class="fas fa-plus-circle"></i> Add a post</a>
+<div class="container">
+        <div class="col-md-offset-3" >
+
+    <% for(let count=0; count<Journallist.length; count++) { %>
+        
+            <div class="box"><h3><%= Journallist[count].date %> </h3>
+
+            <br>
+            <br> 
+
+            <p> <%= Journallist[count].description %> <p>    
+            
+            <br>
+            <br>
+            <br>
+
+            <td class="text-center">
+                <a href="/uni-day/edit/<%= Journallist[count]._id %>"
+                    class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i> Edit </a>
+
+                <a href="/uni-day/delete/<%= Journallist[count]._id %>" 
+                        class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i> Delete </a>
+            </td>
+                </div>  
+        
+<% } %>
+
+</div>
+</div>
+</main>
+
+
+<%- include ('../partials/bottom_nav.ejs'); %>
+<%- include ('../partials/footer.ejs'); %>
