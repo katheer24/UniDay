@@ -3,8 +3,11 @@
  
  <main>
 <br>
-<a href="/uni-day/add" class="btn btn-primary" role="button">
-        <i class="fas fa-plus-circle"></i> Add a post</a>
+<% if (typeof displayName == 'string' && displayName){ %>
+
+    <a href="/uni-day/add" class="btn btn-primary" role="button">
+            <i class="fas fa-plus-circle"></i> Add a post</a>
+<% }%>
 <div class="container">
         <div class="col-md-offset-3" >
 
@@ -22,6 +25,7 @@
             <br>
 
             <td class="text-center">
+            <% if (typeof displayName == 'string' && displayName){ %>
                 <a href="/uni-day/edit/<%= Journallist[count]._id %>"
                     class="btn btn-primary">
                     <i class="fas fa-pencil-alt"></i> Edit </a>
@@ -29,6 +33,7 @@
                 <a href="/uni-day/delete/<%= Journallist[count]._id %>" 
                         class="btn btn-danger">
                         <i class="fas fa-trash-alt"></i> Delete </a>
+                <% }%>
             </td>
                 </div>  
         

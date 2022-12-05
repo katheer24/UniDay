@@ -6,7 +6,17 @@ let Journal = require('../models/uniday');
 
 // Read Operation 
 
-router.get('/', (req,res,next)=>{
+function requireAuth(req,res,next)
+{
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login');
+    }
+    next(); 
+}
+
+
+router.get('/',requireAuth, (req,res,next)=>{
     Journal.find((err,journallist)=>{
         if(err)
         {
@@ -16,7 +26,8 @@ router.get('/', (req,res,next)=>{
         {
             res.render('uniday/list',{
                 title:'Journal Entries', 
-                Journallist: journallist
+                Journallist: journallist,
+                displayName: req.user ? req.user.displayName:''
             })
         }
     
@@ -24,8 +35,8 @@ router.get('/', (req,res,next)=>{
 });
 
 // Add Operation
-router.get('/add', (req,res,next)=>{
-    res.render('uniday/add',{title:'Add a post'})
+router.get('/add',requireAuth, (req,res,next)=>{
+    res.render('uniday/add',{title:'Add a post',displayName: req.user ? req.user.displayName:''})
 });
 //post operation for displaying add operation
 router.post('/add', (req,res,next)=> {
@@ -48,7 +59,7 @@ router.post('/add', (req,res,next)=> {
 });
 
 // Edit Operation
-router.get('/edit/:id', (req,res,next)=>{
+router.get('/edit/:id', requireAuth,(req,res,next)=>{
     let id = req.params.id;
     Journal.findById(id,(err,journalToEdit) =>{
         if(err)
@@ -58,12 +69,12 @@ router.get('/edit/:id', (req,res,next)=>{
         }
         else
         {
-            res.render('uniday/edit',{title:'Edit your post', journal:journalToEdit})
+            res.render('uniday/edit',{title:'Edit your post', journal:journalToEdit,displayName: req.user ? req.user.displayName:''})
         }
     });
 });
 //post operation for displaying edit operation
-router.post('/edit/:id', (req,res,next)=>{
+router.post('/edit/:id',requireAuth, (req,res,next)=>{
     let id=req.params.id;
     let updateJournal = Journal({
         "_id":id,
@@ -85,7 +96,7 @@ router.post('/edit/:id', (req,res,next)=>{
 });
 
 // delete Operation
-router.get('/delete/:id', (req,res,next)=>{
+router.get('/delete/:id', requireAuth,(req,res,next)=>{
     let id = req.params.id;
     Journal.deleteOne({_id:id},(err)=>{
         if(err)
@@ -99,6 +110,4 @@ router.get('/delete/:id', (req,res,next)=>{
         }
     })
 });
-
-
 module.exports=router;

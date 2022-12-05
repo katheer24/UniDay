@@ -3,9 +3,27 @@
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
     <a href="/"><img src="/Assets/media/logo.png" style="height:100px;" alt="Logo"></a>
 
+    <% if(typeof displayName =='string' && displayName) { %>
+        <ul class="navbar-text">
+        <i class="fas fa-lg fa-user"></i>
+        <strong>Welcome, <%= displayName %></strong></ul>
+        <ul class="nav-item">
+        <a href="/logout" class="nav-link">
+        <i class="fas fa-lg fa-sign-out-alt"></i><strong>Logout </strong></a></ul>
+      <% } else { %>
+        <ul class="nav-item">
+          <a href="/login" class="nav-link">
+          <i class="fas fa-lg fa-sign-in-alt"></i><strong>Login</strong></a></ul>
+      <% } %>
   </div>
 </nav>
-    
+  
+<style>
+  ul{
+    text-color: red; 
+  }
+
+</style>
 
 
 

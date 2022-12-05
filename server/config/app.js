@@ -3,6 +3,15 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let session = require('express-session'); 
+let passport = require('passport'); 
+let passportLocal = require('passport-local')
+let localStrategy = passportLocal.Strategy; 
+let flash = require('connect-flash');
+//create a user model instance
+
+let userModel = require("../models/user"); 
+let User = userModel.User; 
 
 //mongodb config
 let mongoose = require('mongoose');
@@ -15,12 +24,32 @@ mongDB.on('error',console.error.bind(console,'Connection Error:'));
 mongDB.once('open', ()=> {
   console.log('connected to the MongoDB');
 });
+let app = express();
+//set up session
+app.use(session({
+  secret:"SomeSecret",
+  saveUninitialized:false, 
+  resave:false
+}))
+
+passport.use(User.createStrategy()); 
+//initializing flash
+app.use(flash()); 
+//initialized passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+//serialize and deserialize the user information
+passport.serializeUser(User.serializeUser()); 
+passport.deserializeUser(User.deserializeUser()); 
+
 
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let unidayRouter = require('../routes/uniday');
 
-let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
