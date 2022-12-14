@@ -93,16 +93,15 @@ ul a:hover{
   background-color: lightyellow;
 }
 
-
 #loginButton {
-  margin-left: auto;
+  margin-left: auto; 
   margin-right: auto;
   background-color: burlywood;
   width: 130pt;
   padding: 5px;
 }
 
-#loginButton:hover {
+#loginButton:hover:after{
   background-color: wheat;
   width: 130pt;
 }
