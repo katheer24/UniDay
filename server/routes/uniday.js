@@ -16,7 +16,7 @@ function requireAuth(req,res,next)
 }
 
 
-router.get('/',requireAuth, (req,res,next)=>{
+router.get('/', (req,res,next)=>{
     Journal.find((err,journallist)=>{
         if(err)
         {

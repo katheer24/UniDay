@@ -93,6 +93,17 @@ ul a:hover{
   background-color: lightyellow;
 }
 
+#loginButton {
+  margin-left: 540px; 
+  background-color: burlywood;
+  width: 130pt;
+  padding: 5px;
+}
+
+#loginButton:hover:after{
+  background-color: wheat;
+  width: 130pt;
+}
 
 .journalbutton {
   appearance: none;

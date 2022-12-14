@@ -7,11 +7,11 @@
         <ul class="navbar-text">
         <i class="fas fa-lg fa-user"></i>
         <strong>Welcome, <%= displayName %></strong></ul>
-        <ul class="nav-item">
+        <ul id= "loginButton">
         <a href="/logout" class="nav-link">
         <i class="fas fa-lg fa-sign-out-alt"></i><strong>Logout </strong></a></ul>
       <% } else { %>
-        <ul class="nav-item">
+        <ul id= "loginButton">
           <a href="/login" class="nav-link">
           <i class="fas fa-lg fa-sign-in-alt"></i><strong>Login</strong></a></ul>
       <% } %>
