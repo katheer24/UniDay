@@ -99,7 +99,7 @@ loginButton {
   padding: 5px;
 }
 
-loginButton:hover{
+loginButton:hover {
   background-color: wheat;
   width: 130pt;
 }
